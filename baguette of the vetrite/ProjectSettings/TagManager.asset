@@ -11,6 +11,7 @@ TagManager:
   - Shield
   - Nuke
   - Rafale
+  - Shielded
   layers:
   - Default
   - TransparentFX

@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             score = GameObject.Find("nbScore").GetComponent<Text>();
-            score.text = ((int)(((timer+nbEnnemi) * (nbEnnemi+1))/timer)).ToString();
+            score.text = ((int)(timer+nbEnnemi)).ToString();
         }
 
     }

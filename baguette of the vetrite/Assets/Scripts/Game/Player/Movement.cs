@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
     Vector3 movement;
     public float speed;
     public string objet;
+    public Image bonusFond;
+    public List<Sprite> bonusImage;
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -33,9 +35,28 @@ public class Movement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Shield")
+        if (other.gameObject.tag == "Shield" || other.gameObject.tag == "Rafale"|| other.gameObject.tag == "Nuke")
         {   objet = other.gameObject.tag;
             Destroy(other.gameObject);
+            DisplayBonus(objet);
         }
+    }
+
+    void DisplayBonus(string bonus)
+    {
+        int choix = 0;
+        switch (bonus)
+        {
+            case "Shield":
+                choix = 0;
+                break;
+            case "Rafale":
+                choix = 1;
+                break;
+            case "Nuke":
+                choix = 2;
+                break;
+        }
+        bonusFond.sprite = bonusImage[choix];
     }
 }

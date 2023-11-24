@@ -11,6 +11,7 @@ public class ennemi : MonoBehaviour
     public float rotaSpeed;
     float rota;
     Transform parent;
+    public GameObject bonus;
     private void Awake()
     {
 
@@ -23,8 +24,16 @@ public class ennemi : MonoBehaviour
 
     void Update()
     {
-        if(vie == 0)
+        if(vie <= 0)
         {
+            int rndm = Random.Range(0, 5);
+            print(rndm);
+            if (rndm == 4)
+            {
+                GameObject bonusObj = Instantiate(bonus,this.transform.position,Quaternion.identity,GameObject.Find("Object").transform);
+                bonusObj.GetComponent<Rigidbody>().velocity = Vector3.back*4;
+                bonusObj.name = "BONUS";
+            }
             Destroy(this.gameObject);
         }
         this.gameObject.transform.position = Vector3.Lerp(this.transform.position, target.transform.position, Time.deltaTime);
@@ -46,10 +55,6 @@ public class ennemi : MonoBehaviour
         if(collision.gameObject.tag == "Bullet")
         {
             vie -= 25;
-        }
-        if (collision.gameObject.tag == "Ennemi")
-        {
-            print("&");
         }
     }
 }
