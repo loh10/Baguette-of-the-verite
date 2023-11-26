@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ennemi : MonoBehaviour
 {
-    [SerializeField]int vie = 100;
+    [SerializeField]public int vie = 100;
     public Transform target;
     public GameObject munition;
     int nbnade;
@@ -15,7 +15,7 @@ public class ennemi : MonoBehaviour
     private void Awake()
     {
 
-        parent = GameObject.Find("Bullet").GetComponent<Transform>();
+        parent = GameObject.Find("EnnemiBullet").GetComponent<Transform>();
     }
     private void Start()
     {
@@ -27,7 +27,6 @@ public class ennemi : MonoBehaviour
         if(vie <= 0)
         {
             int rndm = Random.Range(0, 5);
-            print(rndm);
             if (rndm == 4)
             {
                 GameObject bonusObj = Instantiate(bonus,this.transform.position,Quaternion.identity,GameObject.Find("Object").transform);

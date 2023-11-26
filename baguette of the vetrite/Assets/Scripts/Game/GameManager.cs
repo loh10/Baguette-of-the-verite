@@ -5,35 +5,24 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    GameObject screen;
-    Text timertxt,score;
+    public GameObject screen;
+    public Text timertxt,score;
     float timer;
     public int nbEnnemi;
+    int nbScore;
     private void Awake()
     {
         Time.timeScale = 1.0f;
     }
-    private void Start()
-    {
-        timertxt = GameObject.Find("Timer").GetComponent<Text>();
-    }
-    private void Update()
+    private void FixedUpdate()
     {
         timer += Time.deltaTime;
         timertxt.text = ((int)timer).ToString();
-        try
-        {
-            screen = GameObject.Find("finish");                                                                                                                                                                                                                                                                                                
-        }
-        finally
-        {
-            
-        }
-        if(screen != null)
+        nbScore = (int)timer + nbEnnemi;
+        if(screen.activeSelf)
         {
             Time.timeScale = 0;
-            score = GameObject.Find("nbScore").GetComponent<Text>();
-            score.text = ((int)(timer+nbEnnemi)).ToString();
+            score.text = nbScore.ToString();
         }
 
     }

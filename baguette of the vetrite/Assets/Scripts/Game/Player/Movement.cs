@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     public string objet;
     public Image bonusFond;
     public List<Sprite> bonusImage;
+    [SerializeField] private GameObject Finish;
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -38,11 +39,17 @@ public class Movement : MonoBehaviour
         if (other.gameObject.tag == "Shield" || other.gameObject.tag == "Rafale"|| other.gameObject.tag == "Nuke")
         {   objet = other.gameObject.tag;
             Destroy(other.gameObject);
-            DisplayBonus(objet);
+            //DisplayBonus(objet);
+        }
+        if (other.gameObject.tag == "Nade")
+        {
+            Destroy(other.gameObject);
+            Finish.SetActive(true);
+            Destroy(this.gameObject);
         }
     }
 
-    void DisplayBonus(string bonus)
+    public void DisplayBonus(string bonus)
     {
         int choix = 0;
         switch (bonus)
@@ -55,6 +62,9 @@ public class Movement : MonoBehaviour
                 break;
             case "Nuke":
                 choix = 2;
+                break;
+            default: 
+                choix = 3;
                 break;
         }
         bonusFond.sprite = bonusImage[choix];

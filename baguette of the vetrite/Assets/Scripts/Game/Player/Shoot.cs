@@ -11,7 +11,11 @@ public class Shoot : MonoBehaviour
     [SerializeField]float timer = 1.5f;
     public float maxTime;
     [SerializeField] int nbUseShield = 4;
-
+    public AudioSource source;
+    private void Awake()
+    {
+        source.volume = PlayerPrefs.GetFloat("Volume",0);
+    }
     void Update()
     {
         bonus = GetComponent<Movement>().objet;
@@ -43,9 +47,11 @@ public class Shoot : MonoBehaviour
                 UseObject();
             }
         }
+        GetComponentInParent<Movement>().DisplayBonus(bonus);
     }
     void doShoot()
     {
+        source.Play();
         GameObject bullet = Instantiate(munition,this.transform.position,Quaternion.identity,parentBullet);
         bullet.name = "bullet "+munitionIndex;
         munitionIndex++;
@@ -68,8 +74,7 @@ public class Shoot : MonoBehaviour
                 StartCoroutine(Raffale());
                 break;
             case "Nuke":
-                print("use"); 
-                GetComponent<Movement>().objet = null;
+                StartCoroutine(Nuke());
                 break;
             default:
                 break;
@@ -93,5 +98,20 @@ public class Shoot : MonoBehaviour
         doShoot();
         yield return new WaitForSeconds(0.05f);
         doShoot();
+    }
+    IEnumerator Nuke()
+    {
+        GameObject bullet = GameObject.Find("EnnemiBullet");
+        GameObject ennemi = GameObject.Find("Ennemis");
+        for (int i = 0;i< bullet.transform.childCount;i++)
+        {
+            Destroy(bullet.transform.GetChild(i).gameObject);
+        }
+        for (int i = 0; i < ennemi.transform.childCount; i++)
+        {
+            ennemi.transform.GetChild(i).gameObject.GetComponent<ennemi>().vie = 0;
+        }
+        GetComponent<Movement>().objet = null;
+        yield return null;
     }
 }
