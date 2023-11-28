@@ -11,10 +11,12 @@ public class Shoot : MonoBehaviour
     [SerializeField]float timer = 1.5f;
     public float maxTime;
     [SerializeField] int nbUseShield = 4;
-    public AudioSource source;
+    public AudioSource source,sourceSound;
+    public AudioClip sound,nuke,shield;
     private void Awake()
     {
         source.volume = PlayerPrefs.GetFloat("Volume",0);
+        source.clip = sound;
     }
     void Update()
     {
@@ -52,7 +54,7 @@ public class Shoot : MonoBehaviour
     void doShoot()
     {
         source.Play();
-        GameObject bullet = Instantiate(munition,this.transform.position,Quaternion.identity,parentBullet);
+        GameObject bullet = Instantiate(munition,new Vector3(this.transform.position.x,0, this.transform.position.z+1),Quaternion.identity,parentBullet);
         bullet.name = "bullet "+munitionIndex;
         munitionIndex++;
     }
@@ -86,7 +88,10 @@ public class Shoot : MonoBehaviour
     {
         nbUseShield--;
         this.gameObject.tag = "Shielded";
+        sourceSound.clip = shield;
+        sourceSound.Play();
         yield return new WaitForSeconds(2f);
+        sourceSound.clip = null;
         this.gameObject.tag = "Player";
     }
     IEnumerator Raffale()
@@ -111,7 +116,11 @@ public class Shoot : MonoBehaviour
         {
             ennemi.transform.GetChild(i).gameObject.GetComponent<ennemi>().vie = 0;
         }
+        sourceSound.clip = nuke;
+        sourceSound.Play();
         GetComponent<Movement>().objet = null;
+        yield return new WaitForSeconds(2);
+        sourceSound.clip = null;
         yield return null;
     }
 }

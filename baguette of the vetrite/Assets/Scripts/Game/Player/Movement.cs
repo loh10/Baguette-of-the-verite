@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     public Image bonusFond;
     public List<Sprite> bonusImage;
     [SerializeField] private GameObject Finish;
+    public AudioClip death;
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -39,16 +40,22 @@ public class Movement : MonoBehaviour
         if (other.gameObject.tag == "Shield" || other.gameObject.tag == "Rafale"|| other.gameObject.tag == "Nuke")
         {   objet = other.gameObject.tag;
             Destroy(other.gameObject);
-            //DisplayBonus(objet);
         }
-        if (other.gameObject.tag == "Nade")
+        if ((other.gameObject.tag == "Nade"|| other.gameObject.tag == "Ennemi"|| other.gameObject.tag == "Boss") && this.gameObject.tag !="Shielded")
         {
             Destroy(other.gameObject);
-            Finish.SetActive(true);
-            Destroy(this.gameObject);
+            StartCoroutine(Death());
         }
     }
 
+    IEnumerator Death()
+    {
+        Finish.SetActive(true);
+        GetComponent<Shoot>().source.clip = death;
+        GetComponent<Shoot>().source.Play();
+        GetComponent<Shoot>().source.clip = null;
+        yield return null;
+    }
     public void DisplayBonus(string bonus)
     {
         int choix = 0;

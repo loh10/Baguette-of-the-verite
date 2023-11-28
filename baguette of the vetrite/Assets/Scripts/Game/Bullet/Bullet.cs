@@ -20,6 +20,11 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
             bulletManager.nbEnnemi++;
         }
+        if (collision.gameObject.tag == "Boss")
+        {
+            Destroy(this.gameObject);
+            bulletManager.nbEnnemi++;
+        }
         if (collision.gameObject.tag == "Border")
         {
             Destroy(this.gameObject);

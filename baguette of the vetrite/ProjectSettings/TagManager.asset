@@ -12,6 +12,7 @@ TagManager:
   - Nuke
   - Rafale
   - Shielded
+  - Boss
   layers:
   - Default
   - TransparentFX

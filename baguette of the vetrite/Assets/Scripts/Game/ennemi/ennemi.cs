@@ -14,11 +14,7 @@ public class ennemi : MonoBehaviour
     public GameObject bonus;
     private void Awake()
     {
-
         parent = GameObject.Find("EnnemiBullet").GetComponent<Transform>();
-    }
-    private void Start()
-    {
         StartCoroutine(Attack());
     }
 

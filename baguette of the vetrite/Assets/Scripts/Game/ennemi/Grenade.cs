@@ -19,9 +19,5 @@ public class Grenade : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        //if(collision.gameObject.tag == "Bullet")
-        //{
-        //    this.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), ForceMode.Impulse);
-        //}
     }
 }
