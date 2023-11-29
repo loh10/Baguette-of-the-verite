@@ -5,13 +5,18 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     GameManager bulletManager;
+    public Vector3 dir;
+    Vector3 velocity;
     private void Awake()
     {
+        dir = new Vector3 (0, 0, 1);
         bulletManager = GameObject.Find("BulletManager").GetComponent< GameManager>();
     }
     void Update()
     {
-        GetComponent<Rigidbody>().velocity = Vector3.forward * 20;
+        GetComponent<Rigidbody>().velocity = dir * 20;
+        velocity = GetComponent<Rigidbody>().velocity;
+        transform.rotation = Quaternion.LookRotation(velocity);
     }
     private void OnTriggerEnter(Collider collision)
     {

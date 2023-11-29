@@ -13,6 +13,8 @@ public class Movement : MonoBehaviour
     public List<Sprite> bonusImage;
     [SerializeField] private GameObject Finish;
     public AudioClip death;
+    public int nbUse;
+    public bool newObj;
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -37,9 +39,25 @@ public class Movement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Shield" || other.gameObject.tag == "Rafale"|| other.gameObject.tag == "Nuke")
+        if (other.gameObject.tag == "Shield" || other.gameObject.tag == "Rafale"|| other.gameObject.tag == "Nuke" || other.gameObject.tag == "Shotgun")
         {   objet = other.gameObject.tag;
+            switch(objet)
+            {
+                case "Shield":
+                    nbUse = 4;
+                    break;
+                case "Rafale":
+                    nbUse = 1000;
+                    break;
+                case "Nuke":
+                    nbUse = 1;
+                    break;
+                case "Shotgun":
+                    nbUse = 5;
+                    break;
+            }
             Destroy(other.gameObject);
+            newObj = true;
         }
         if ((other.gameObject.tag == "Nade"|| other.gameObject.tag == "Ennemi"|| other.gameObject.tag == "Boss") && this.gameObject.tag !="Shielded")
         {
@@ -70,8 +88,11 @@ public class Movement : MonoBehaviour
             case "Nuke":
                 choix = 2;
                 break;
+            case "Shotgun":
+                choix =3;
+                break;
             default: 
-                choix = 3;
+                choix = 4;
                 break;
         }
         bonusFond.sprite = bonusImage[choix];

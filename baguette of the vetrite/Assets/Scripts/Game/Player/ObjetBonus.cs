@@ -23,6 +23,9 @@ public class ObjetBonus : MonoBehaviour
             case "Nuke":
                 material = materials[2];
                 break;
+            case "Shotgun":
+                material = materials[3];
+                break;
         }
         this.GetComponent<MeshRenderer>().material = material;
     }

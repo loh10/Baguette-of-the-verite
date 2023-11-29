@@ -150,7 +150,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7d453ca9896fb624f8dfb21f77fb2b62, type: 2}
   - {fileID: 2100000, guid: 7af057c32a493664994dc806ed6bcec0, type: 2}
   - {fileID: 2100000, guid: 2a0364c381022194a80cb08155e5e189, type: 2}
+  - {fileID: 2100000, guid: 40c122ca79eb6ee459eca4a72a458721, type: 2}
   tagObject:
   - Shield
   - Rafale
   - Nuke
+  - Shotgun

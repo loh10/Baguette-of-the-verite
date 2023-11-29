@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -391,6 +391,37 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &269844668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269844669}
+  m_Layer: 0
+  m_Name: TUltra
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &269844669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269844668}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2061515934}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &744065086
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +1001,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1134872681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1134872682}
+  m_Layer: 0
+  m_Name: Ultra
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1134872682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134872681}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1341768701}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1170660468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1265,7 @@ Transform:
   - {fileID: 2019055084}
   - {fileID: 1009746700}
   - {fileID: 1632314873}
+  - {fileID: 1134872682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1442626664
@@ -1396,10 +1459,13 @@ MonoBehaviour:
   - {fileID: 948695316}
   - {fileID: 1529354941}
   - {fileID: 751176612}
+  targetUltra: {fileID: 269844669}
   ennemiPrefab: {fileID: 452584968230608439, guid: f25664cf7737d084faeda59fa39e57b4, type: 3}
   bossPrefab: {fileID: 452584968230608439, guid: 51bba5802db5ab24189a0e28a5de0026, type: 3}
+  Ultraprefab: {fileID: 3423109755092059861, guid: 286bb0fb346167347a7e444b28512b58, type: 3}
   parent: {fileID: 1009746700}
   parentBoss: {fileID: 1632314873}
+  parentUltra: {fileID: 1134872682}
 --- !u!1 &1680346288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,6 +1778,7 @@ Transform:
   - {fileID: 948695316}
   - {fileID: 1529354941}
   - {fileID: 751176612}
+  - {fileID: 269844669}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2133650037
@@ -1871,9 +1938,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e6be18c22e4919147858a5529f943b0a, type: 3}
   - {fileID: 21300000, guid: e8cf4447ec8ae4f498f36ef521e3f17c, type: 3}
   - {fileID: 21300000, guid: 4dc91501072766c4e857cff6a5feb141, type: 3}
+  - {fileID: 21300000, guid: 27fa4bbcf4a5f8748aefde991be67263, type: 3}
   - {fileID: 21300000, guid: 0e190de1a06591e4dae5d671aa807373, type: 3}
   Finish: {fileID: 8256971991211167913}
   death: {fileID: 8300000, guid: 3844c444c53220d4bb3c997e3fd7bf5a, type: 3}
+  nbUse: 0
+  newObj: 0
 --- !u!143 &2134062706
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2032,12 +2102,19 @@ MonoBehaviour:
   parentBullet: {fileID: 2019055084}
   timer: 1.5
   maxTime: 0
-  nbUseShield: 4
+  use: 0
   source: {fileID: 2134062713}
   sourceSound: {fileID: 2134062714}
   sound: {fileID: 8300000, guid: 694e162026aecd5429bb9793c714f3ce, type: 3}
   nuke: {fileID: 8300000, guid: 6a5bbeefc73ec004aa1d58d5ca06d683, type: 3}
   shield: {fileID: 8300000, guid: 08edffd7ea7421d4d87eb8652d592bfe, type: 3}
+  direction:
+  - {x: 0, y: 0, z: 1}
+  - {x: -1, y: 0, z: 1}
+  - {x: -0.5, y: 0, z: 1}
+  - {x: 0.5, y: 0, z: 1}
+  - {x: 1, y: 0, z: 1}
+  chooseDir: {x: 0, y: 0, z: 0}
 --- !u!82 &2134062713
 AudioSource:
   m_ObjectHideFlags: 0
