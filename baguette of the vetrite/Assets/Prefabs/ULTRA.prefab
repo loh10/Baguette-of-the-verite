@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3423109755092059861}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.85565454, z: -0, w: -0.5175474}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.16136447, y: 0, z: 1.0944474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 9200173499435608025}
   - {fileID: 6367022514349380840}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -242.336, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4192561466665781390
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -126,9 +126,12 @@ MonoBehaviour:
   target: {fileID: 0}
   BG: {fileID: 8199807832162887171}
   BD: {fileID: 5237107024396929640}
+  barredevie: {fileID: 6903572817015916230, guid: be464eeba4d8e9b44bb17ce1e33fa143, type: 3}
   firerate: 4
   rotaSpeed: 100
   bonus: {fileID: 0}
+  life: {fileID: 0}
+  posHp: {x: -800, y: 0, z: 0}
 --- !u!1 &5237107024396929640
 GameObject:
   m_ObjectHideFlags: 0

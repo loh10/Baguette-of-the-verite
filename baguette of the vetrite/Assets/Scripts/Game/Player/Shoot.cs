@@ -20,6 +20,7 @@ public class Shoot : MonoBehaviour
     {
         movement = GetComponent<Movement>();
         source.volume = PlayerPrefs.GetFloat("Volume",0);
+        sourceSound.volume = PlayerPrefs.GetFloat("Volume", 0);
         source.clip = sound;
     }
     void Update()

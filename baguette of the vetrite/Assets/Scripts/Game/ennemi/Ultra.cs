@@ -1,18 +1,24 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ultra : MonoBehaviour
 {
     [SerializeField]public int vie = 1000;
     public Transform target;
-    public GameObject BG,BD;
+    public GameObject BG, BD,barredevie;
     public float firerate;
     public float rotaSpeed;
     float rota;
     public GameObject bonus;
+    public Slider life;
+    [SerializeField] Vector3 posHp;
     private void Awake()
     {
         target = GameObject.Find("TUltra").GetComponent<Transform>();
+        GameObject hp = Instantiate(barredevie, GameObject.Find("Life").transform.position, GameObject.Find("Life").transform.rotation, GameObject.Find("Life").transform);
+        life = hp.GetComponent<Slider>();
+        life.maxValue = vie;
     }
     private void Start()
     {
@@ -20,8 +26,10 @@ public class Ultra : MonoBehaviour
     }
     void Update()
     {
+        life.value = vie;
         if(vie <= 0)
         {
+            Destroy(life.gameObject);
             Destroy(this.gameObject);
         }
         this.gameObject.transform.position = Vector3.Lerp(this.transform.position, target.transform.position, Time.deltaTime);

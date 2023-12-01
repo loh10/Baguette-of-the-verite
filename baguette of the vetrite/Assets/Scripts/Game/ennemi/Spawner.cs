@@ -50,7 +50,7 @@ public class Spawner : MonoBehaviour
                     spawn = true;
                 }
             }
-            
+
         }
         vague++;
         yield return new WaitForSeconds(delaiSpawn);
